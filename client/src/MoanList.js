@@ -1,6 +1,5 @@
 import AddMoan from "./AddMoan";
 import Moan from "./Moan"
-import App from "./App";
 function MoanList(props){
     
     const list = props.moanzlist.map((moaan,index) => (
@@ -11,6 +10,7 @@ function MoanList(props){
     ));
     
     return(
+        <>
         <div>
         
         <ol>
@@ -22,7 +22,7 @@ function MoanList(props){
         <AddMoan addMoan={props.addMoan}/>
         </div>
         </div>
-        
+        </>
     )
 }
 export default MoanList;

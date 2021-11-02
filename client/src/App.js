@@ -1,38 +1,38 @@
 import { useEffect, useState } from "react";
-import "../node_modules/bootstrap/dist/css/bootstrap.css"
-import AddMoan from "./AddMoan";
+import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "./App.css";
-import Moan from "./Moan";
 import MoanList from "./MoanList";
-import Moanz from "./Moanz";
 const API_URL = process.env.REACT_APP_API;
 
 function App() {
-  const defa = 0
-  const [moanzlist,setData] = useState([]);
+ const [moanzlist,setData] = useState([]);
 
+ useEffect(() => {
+  /*async function getData() {
+    const url = `${API_URL}/moanz`;
+    const response = await fetch(url);
+    const data = await response.json();
+    setData(moanzlist);
+  }
+  getData(moanzlist);*/
+  //Måske skal jeg bruge det senere, det er boilerkode. 
+
+  
+
+
+}, []);
 
   function addMoan(headline,complaint){
     const mogens = {
       headline:headline,
-      complaint:complaint };
-      setData([...moanzlist,mogens])
-
-
-    };
+      complaint:complaint,
+      };
+      setData([...moanzlist,mogens])};
   
   
   
 
-  useEffect(() => {
-    async function getData() {
-      const url = `${API_URL}/moanz`;
-      const response = await fetch(url);
-      const data = await response.json();
-      setData(moanzlist);
-    }
-    getData(moanzlist);
-  }, []);
+  
 
   return (
     <>

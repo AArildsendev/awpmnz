@@ -11,6 +11,8 @@
   },
   "license": "ISC",
   "dependencies": {
-    "nodemon": "^2.0.14"
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.14",
+    "static": "^2.0.0"
   }
 }

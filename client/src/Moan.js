@@ -1,3 +1,5 @@
+import RableUp from "./RableUp"
+
 function Moan(props){
 
 return(
@@ -5,7 +7,11 @@ return(
         <h2>{props.moan.headline}</h2> 
         <p>{props.moan.complaint}</p> 
         <p>{props.moan.rablerable}</p>
-        </div>
+        <RableUp/>
+    </div>
+    
+    
+   
 )
 
 }
