@@ -4,39 +4,53 @@ import AddMoan from "./AddMoan";
 import "./App.css";
 import Moan from "./Moan";
 import MoanList from "./MoanList";
-import moanz from "./moanz";
+import Moanz from "./Moanz";
 const API_URL = process.env.REACT_APP_API;
 
 function App() {
   const defa = 0
-  const moanzlist = [{
-    id:1,
+  const [moanzlist,setData] = useState([
+    {
     headline: "Min chef er dum",
     complaint: "Han holder med brøndby",
-    rablerable: defa
-  }]
+    rablerable: defa},
+    {
+      
+      headline:"Uha jeg er syg",
+      complaint:"Jeg har feber :(",
+      rablerable:defa
+    }
+  ]);
+
+
+  function addMoan(headline,complaint){
+    const mogens = {
+      headline:headline,
+      complaint:complaint };
+      setData([...moanzlist,mogens])
+
+
+    };
   
-  //const [data, setData] = useState([]);
+  
+  
 
   useEffect(() => {
     async function getData() {
       const url = `${API_URL}/moanz`;
       const response = await fetch(url);
       const data = await response.json();
-      //setData(data);
+      setData(moanzlist);
     }
-    getData();
+    getData(moanzlist);
   }, []);
 
   return (
     <>
     <div>
       <h1>Moanz</h1>
-      <br/>
       <h2>Complain here - Let the other MoanerZ hear you</h2>
-      <p>Data from server:</p>
-      
-      <MoanList moanzlist={moanzlist}/>
+      <MoanList moanzlist={moanzlist} addMoan={addMoan} />
       
       </div>
     </>

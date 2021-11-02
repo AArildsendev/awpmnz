@@ -1,4 +1,4 @@
-function moanz(props){
+function Moanz(props){
 const {id,getmoan} = props;
 const moanz = getmoan(id);
 
@@ -31,4 +31,4 @@ return(
 
 }
 
-export default moanz;
+export default Moanz;

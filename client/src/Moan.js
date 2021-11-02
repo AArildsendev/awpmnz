@@ -2,10 +2,9 @@ function Moan(props){
 
 return(
     <div>
-        <h2>{props.headline}</h2> <br/>
-        <p>{props.complaint}</p> <br/>
-        <p>{props.rablerable}</p>
-        
+        <h2>{props.moan.headline}</h2> 
+        <p>{props.moan.complaint}</p> 
+        <p>{props.moan.rablerable}</p>
         </div>
 )
 

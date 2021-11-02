@@ -1,9 +1,11 @@
 import AddMoan from "./AddMoan";
 import Moan from "./Moan"
+import App from "./App";
 function MoanList(props){
-    const list = props.moanzlist.map((moaan,complaiin,rablerablee,index) => (
+    
+    const list = props.moanzlist.map((moaan,index) => (
     <li key={index}>
-       <Moan headline={moaan} complaint={complaiin} rablerable={rablerablee}/>
+       <Moan moan={moaan}/>
     </li>
     
     ));
@@ -12,10 +14,12 @@ function MoanList(props){
         <div>
         
         <ol>
+        <li>
         {list}
+        </li>
         </ol>
         <div>
-        <AddMoan/>
+        <AddMoan addMoan={props.addMoan}/>
         </div>
         </div>
         
