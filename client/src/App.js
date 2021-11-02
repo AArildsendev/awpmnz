@@ -9,18 +9,7 @@ const API_URL = process.env.REACT_APP_API;
 
 function App() {
   const defa = 0
-  const [moanzlist,setData] = useState([
-    {
-    headline: "Min chef er dum",
-    complaint: "Han holder med brøndby",
-    rablerable: defa},
-    {
-      
-      headline:"Uha jeg er syg",
-      complaint:"Jeg har feber :(",
-      rablerable:defa
-    }
-  ]);
+  const [moanzlist,setData] = useState([]);
 
 
   function addMoan(headline,complaint){

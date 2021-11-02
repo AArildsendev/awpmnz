@@ -14,9 +14,9 @@ function MoanList(props){
         <div>
         
         <ol>
-        <li>
+        
         {list}
-        </li>
+       
         </ol>
         <div>
         <AddMoan addMoan={props.addMoan}/>
