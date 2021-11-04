@@ -39,6 +39,21 @@ useEffect(() => {
       postMaMoan();
       setData([...moanzlist,mogens]);
     };
+
+    const postRableUp = async() =>{
+      const id = req.body.id
+      const up = {rablerable:rablerable}
+      const url = `${API_URL}/complaints/up`
+      const response = await fetch(url,{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+        },
+        body: JSON.stringify(up)
+      })
+      postRableUp();
+      
+    }
   
   
   return (
