@@ -3,13 +3,15 @@ import Moan from "../models/moan.js";
 
 const moanRoutes = express.Router();
 
-moanRoutes.get("/", (req,res)=>{
-    res.json(Moan);
+moanRoutes.get("/complaints/",async (req,res)=>{
+    const moans = await Moan.find();
+    res.json(moans)
+    
 });
-moanRoutes.post("/newMoan", async(req,res)=>{
+moanRoutes.post("/complaints/", (req,res)=>{
     const moan = new Moan(req.body);
     try{
-        await moan.save() 
+        moan.save(); 
         res.status(201);
         res.json(moan);
         }
@@ -20,6 +22,7 @@ moanRoutes.post("/newMoan", async(req,res)=>{
                 details:error.toString(),
             });
         }
+        console.log("Hello")
 });
 
 moanRoutes.get("/:id",async(req,res)=>{
@@ -34,7 +37,7 @@ try{
     }}
     catch(error){
         res.status(500);
-        res.json({ error: "Something went wrong", details: error.toString() });
+        res.json({ error: "Something wwent wrong", details: error.toString() });
 
     }
 
