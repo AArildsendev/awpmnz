@@ -6,11 +6,12 @@ const moanRoutes = express.Router();
 moanRoutes.get("/", (req,res)=>{
     res.json(Moan);
 });
-moanRoutes.post("/", async(req,res)=>{
+moanRoutes.post("/newMoan", async(req,res)=>{
+    const moan = new Moan(req.body);
     try{
-        const moan = await Moan.create(req.body);
+        await moan.save() 
         res.status(201);
-        res.json(Moan);
+        res.json(moan);
         }
         catch(error){
             res.status(500);
