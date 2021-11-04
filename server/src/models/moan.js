@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 const moanSchema = new mongoose.Schema({
   headline: {
     type: String,
@@ -9,20 +8,25 @@ const moanSchema = new mongoose.Schema({
   rablerable: Number,
 });
 
-const Moan = mongoose.model("moan", moanSchema);
+const Moan = mongoose.model("Moan", moanSchema);
 
-/*
-async function doStuff(){
-const mainmoan = new Moan({headline:"Chef er endnu dummere idag",complaint:"han sender emails",rablerable:0})
+async function stuff(){
+/*let mainmoan = new Moan({headline:"Chef er endnu dummere idag",complaint:"han sender emails",rablerable:0})
 try{
-  const savemoan = await mainmoan.save();
-  console.log("Moan saved:", savemoan.headline);
+const savedmoan = await mainmoan.save();
+console.log("Moan saved",savedmoan.headline);
 }catch(error){
-  console.error(error);
+  console.error(error);*/
+  console.log("connected")
 }
 
-doStuff().then(()=>{
-  mongoose.disconnect();
-})}*/
+
+
+stuff().then(()=>
+mongoose.disconnect
+);
+
+
+
 
 export default Moan;

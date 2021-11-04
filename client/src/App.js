@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import {Router} from "@reach/router"
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import MoanList from "./MoanList";
@@ -7,33 +8,54 @@ const API_URL = process.env.REACT_APP_API;
 function App() {
  const [moanzlist,setData] = useState([]);
 
- useEffect(() => {
-  /*async function getData() {
-    const url = `${API_URL}/moanz`;
+useEffect(() => {
+  async function getData() {
+    const url = `${API_URL}/complaints/`;
     const response = await fetch(url);
-    const data = await response.json();
+    const moanzlist = await response.json();
     setData(moanzlist);
   }
-  getData(moanzlist);*/
-  //Måske skal jeg bruge det senere, det er boilerkode. 
-
-  
-
-
-}, []);
+  getData();
+ }, []);
 
   function addMoan(headline,complaint){
     const mogens = {
       headline:headline,
       complaint:complaint,
       };
-      setData([...moanzlist,mogens])};
-  
-  
-  
+      
+      const postMaMoan = async() => {
+        const url = `${API_URL}/complaints/`;
+        const response = await fetch(url,{
+          method:'POST',
+          headers:{
+            'Content-Type':'application/json',
+          },
+          body: JSON.stringify(mogens),
+        });
+        const reply = await response.json();
+        console.log(reply);
+      };
+      postMaMoan();
+      setData([...moanzlist,mogens]);
+    };
 
+    const postRableUp = async() =>{
+      const id = req.body.id
+      const up = {rablerable:rablerable}
+      const url = `${API_URL}/complaints/up`
+      const response = await fetch(url,{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+        },
+        body: JSON.stringify(up)
+      })
+      postRableUp();
+      
+    }
   
-
+  
   return (
     <>
     <div>

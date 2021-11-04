@@ -31,4 +31,4 @@ return(
 
 }
 
-export default Moanz;
+//export default Moanz;
