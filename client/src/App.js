@@ -8,19 +8,14 @@ function App() {
  const [moanzlist,setData] = useState([]);
 
  useEffect(() => {
-  /*async function getData() {
+  async function getData() {
     const url = `${API_URL}/moanz`;
     const response = await fetch(url);
-    const data = await response.json();
+    const moanzlist = await response.json();
     setData(moanzlist);
   }
-  getData(moanzlist);*/
-  //Måske skal jeg bruge det senere, det er boilerkode. 
-
-  
-
-
-}, []);
+  getData(moanzlist);
+ }, []);
 
   function addMoan(headline,complaint){
     const mogens = {
