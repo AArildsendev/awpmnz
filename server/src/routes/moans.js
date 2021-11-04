@@ -3,15 +3,14 @@ import Moan from "../models/moan.js";
 
 const moanRoutes = express.Router();
 
-moanRoutes.get("/", async(req,res)=>{
-    const moans = await Moan.find();
-    res.json(moans);
+moanRoutes.get("/", (req,res)=>{
+    res.json(Moan);
 });
 moanRoutes.post("/", async(req,res)=>{
     try{
         const moan = await Moan.create(req.body);
         res.status(201);
-        res.json(moan);
+        res.json(Moan);
         }
         catch(error){
             res.status(500);
