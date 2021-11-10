@@ -1,16 +1,9 @@
+import Moan from "./Moan";
 function Moanz(props){
-const {id,getmoan} = props;
-const moanz = getmoan(id);
+const {_id,getMoan} = props;
+const moanz = getMoan(_id);
 
-if(moanz === undefined){
-    return <p>This complain doesnt exist yet- write a complaint</p>
-} else
-return(
-    <div>
-        <h3>{moanz.headline}</h3><br/>
-        <p>{moanz.complaint}</p><br/>
-        <p>Amount of rablerable: {moanz.rablerable}</p>
-        <div>
+        /*<div>
          {moanz.comments ? (<ul>
              {moanz.comments.map((comment,index) => {
                  return( <li key={index}>
@@ -20,8 +13,12 @@ return(
          </ul>) : (
              <p1>No comments yet, be the first to comment</p1>
          ) }
-       </div>
-    </div>
+       </div>*/
+if(moanz === undefined){
+    return <p>This complain doesnt exist yet- write a complaint</p>
+} else
+return(
+    <Moan headline={moanz.headline}/>
     
 
     

@@ -5,7 +5,7 @@ const moanSchema = new mongoose.Schema({
     required: true,
   },
   complaint: {type:String, required:true},
-  rablerable: Number,
+  rablerable: {type: Number, default:0}
 });
 
 const Moan = mongoose.model("Moan", moanSchema);
@@ -16,8 +16,10 @@ try{
 const savedmoan = await mainmoan.save();
 console.log("Moan saved",savedmoan.headline);
 }catch(error){
-  console.error(error);*/
+  console.error(error);
+  //await Moan.deleteMany({})*/
   console.log("connected")
+  //}
 }
 
 

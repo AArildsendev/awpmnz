@@ -1,6 +1,4 @@
 import express from "express";
-import { isValidObjectId } from "mongoose";
-import RableUp from "../../../client/src/RableUp.js";
 import Moan from "../models/moan.js";
 
 const moanRoutes = express.Router();
@@ -27,7 +25,7 @@ moanRoutes.post("/complaints/", (req,res)=>{
         console.log("Hello")
 });
 
-moanRoutes.post("/complaints/up", (req,res) =>{
+moanRoutes.post("/complaints/kk/", (req,res) =>{
     let id = Moan(req.body.id)
     const rableup = Moan.findOneAndUpdate(id,{rablerable:+1},function(err,docs){
         if(err){
@@ -51,9 +49,9 @@ moanRoutes.post("/complaints/up", (req,res) =>{
     }
     })
 
-moanRoutes.get("/:id",async(req,res)=>{
+moanRoutes.get("/complaints/:_id",async(req,res)=>{
 try{
-    const moan = await Moan.findById(req.params.id);
+    const moan = await Moan.findById(req.params._id);
     if(moan){
         res.json(moan);
     }
@@ -66,6 +64,7 @@ try{
         res.json({ error: "Something wwent wrong", details: error.toString() });
 
     }
+    console.log("success")
 
 
 });

@@ -3,6 +3,8 @@ import {Router} from "@reach/router"
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import MoanList from "./MoanList";
+import Moanz from "./Moanz"
+
 const API_URL = process.env.REACT_APP_API;
 
 function App() {
@@ -16,7 +18,16 @@ useEffect(() => {
     setData(moanzlist);
   }
   getData();
+  
  }, []);
+
+ 
+   function getMoan(_id){
+
+    return moanzlist.find(mogens => mogens._id === parseInt(_id));
+    
+
+    }
 
   function addMoan(headline,complaint){
     const mogens = {
@@ -40,18 +51,23 @@ useEffect(() => {
       setData([...moanzlist,mogens]);
     };
 
-    const postRableUp = async() =>{
-      const id = req.body.id
+    function postUp(rablerable){
+      const id = getMoan()
       const up = {rablerable:rablerable}
-      const url = `${API_URL}/complaints/up`
+      const postRableUp = async() =>{
+      const url = `${API_URL}/complaints/${id}`
       const response = await fetch(url,{
         method:'POST',
         headers:{
           'Content-Type':'application/json',
         },
-        body: JSON.stringify(up)
-      })
-      postRableUp();
+        body: JSON.stringify(up),});
+        const reply = await response.json();
+        console.log(reply);
+        
+      };
+      postRableUp()
+      setData([...moanzlist,up])
       
     }
   
@@ -61,15 +77,15 @@ useEffect(() => {
     <div>
       <h1>Moanz</h1>
       <h2>Complain here - Let the other MoanerZ hear you</h2>
-      <MoanList moanzlist={moanzlist} addMoan={addMoan} />
-      
+      <Router>
+       <MoanList path="/" moanzlist={moanzlist} addMoan={addMoan}/>
+       <Moanz path="/complaints/:_id" getMoan={getMoan}/>
+      </Router>
       </div>
-    </>
+     </>
   );
 }
 
-// todo: Få Moanz listen til at vise og implementere nogen metoder til at tilføje moanz. 
-// todo: Få routing til enkelte Moans til at virke og gøre det samme som ovenstående bare med comments
-// todo: Få tingene til at hænge sammen med mongoose og databasen
+
 
 export default App;

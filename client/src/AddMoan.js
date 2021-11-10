@@ -27,7 +27,7 @@ function AddMoan(props){
                 />
             </div>
             <button 
-            type="submit"
+            type="button"
             onClick={(event) =>{
             addMoan(headline,complaint);
                 
