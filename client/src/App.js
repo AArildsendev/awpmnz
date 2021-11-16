@@ -9,6 +9,7 @@ const API_URL = process.env.REACT_APP_API;
 
 function App() {
  const [moanzlist,setData] = useState([]);
+ 
 
 useEffect(() => {
   async function getData() {
@@ -18,16 +19,17 @@ useEffect(() => {
     setData(moanzlist);
   }
   getData();
+
   
  }, []);
 
  
+
+ 
    function getMoan(_id){
 
-    return moanzlist.find(mogens => mogens._id === parseInt(_id));
-    
-
-    }
+      return moanzlist.find(moanz => moanz._id);
+ }
 
   function addMoan(headline,complaint){
     const mogens = {
@@ -78,8 +80,8 @@ useEffect(() => {
       <h1>Moanz</h1>
       <h2>Complain here - Let the other MoanerZ hear you</h2>
       <Router>
-       <MoanList path="/" moanzlist={moanzlist} addMoan={addMoan}/>
-       <Moanz path="/complaints/:_id" getMoan={getMoan}/>
+       <MoanList path="/" moanzlist={moanzlist} addMoan={addMoan}></MoanList>
+       <Moanz path="/complaints/:_id" getMoan={getMoan} moanzlist={moanzlist}></Moanz>
       </Router>
       </div>
      </>

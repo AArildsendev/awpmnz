@@ -1,8 +1,7 @@
 import RableUp from "./RableUp"
 
 function Moan(props){
-    const {_id,getMoan} = props;
-    const moan = getMoan(_id);
+    
     // <RableUp postUp={props.rableUp}/>
 
 return(

@@ -8,7 +8,29 @@ moanRoutes.get("/complaints/",async (req,res)=>{
     res.json(moans)
     
 });
-moanRoutes.post("/complaints/", (req,res)=>{
+
+moanRoutes.get("/complaints/:_id",(req,res)=>{
+    try{
+        const moan =  Moan.findById(req.params._id);
+       
+        if(moan){
+            res.json(moan);
+        }
+        else{
+            res.status(404);
+            res.json({error:"moan does not exist"});
+        }}
+        catch(error){
+            res.status(500);
+            res.json({ error: "Something wwent wrong", details: error.toString() });
+    
+        }
+        
+    
+    
+    });
+
+    moanRoutes.post("/complaints/", (req,res)=>{
     const moan = new Moan(req.body);
     try{
         moan.save(); 
@@ -25,7 +47,9 @@ moanRoutes.post("/complaints/", (req,res)=>{
         console.log("Hello")
 });
 
-moanRoutes.post("/complaints/kk/", (req,res) =>{
+
+
+/*moanRoutes.post("/complaints/kk/", (req,res) =>{
     let id = Moan(req.body.id)
     const rableup = Moan.findOneAndUpdate(id,{rablerable:+1},function(err,docs){
         if(err){
@@ -47,26 +71,8 @@ moanRoutes.post("/complaints/kk/", (req,res) =>{
             details:error.toString(),})
     
     }
-    })
-
-moanRoutes.get("/complaints/:_id",async(req,res)=>{
-try{
-    const moan = await Moan.findById(req.params._id);
-    if(moan){
-        res.json(moan);
-    }
-    else{
-        res.status(404);
-        res.json({error:"moan does not exist"});
-    }}
-    catch(error){
-        res.status(500);
-        res.json({ error: "Something wwent wrong", details: error.toString() });
-
-    }
-    console.log("success")
+    })*/
 
 
-});
 
 export default moanRoutes;
