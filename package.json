@@ -11,6 +11,6 @@
   },
   "license": "ISC",
   "dependencies": {
-    "nodemon": "^2.0.14"
+    "async": "^3.2.2"
   }
 }

@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 async function connectDatabase() {
+  
   const connectionString = process.env.MONGODB_URL;
 
   if (!connectionString) {
