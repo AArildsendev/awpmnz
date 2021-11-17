@@ -3,22 +3,25 @@ import Moan from "./Moan";
 const API_URL = process.env.REACT_APP_API;
 
 function RableUp (props){
-//const{id,getmoan} = props;
-//const moanz = getmoan(id);
-const[rablerable,setRable] = useState(0);
+    const {raBup,getMoan} = props;
+    const [rablerable,setRableRable] = useState(props.rablerable);
 
-useEffect(()=>{
-   <Moan rablerable={rablerable}/>
-    },[rablerable]);
 
-return(
-    
-    
-    <div>
-        
-        <button
-        onClick={()=>{setRable(rablerable+1)}}>Rablerable</button>
+    useEffect(()=>{
+        //Brug getMoan til at få fat rablerable count og brug det i din setRableRable
+    })
+   return(
+      <div>
+       <button
+       type="button"
+       onClick={(event)=>
+       setRableRable(props.rablerable+1),
+       {raBup(rablerable)
+       }}> RableUP</button>
        </div>
+    
+    
+ 
  
 
  
