@@ -6,7 +6,7 @@ const API_URL = process.env.REACT_APP_API;
 function MoanList(props){
    const list = props.moanzlist.map((moaan,index) => (
     <li key={index}>
-      <Link to={`/complaints/${moaan._id}`}>Gå til dette moan</Link>
+      <Link to={`/moanz/${moaan._id}`}>Gå til dette moan</Link>
       <Moan moan={moaan}/>
       <RableUp rablerable={moaan.rablerable}/>
       

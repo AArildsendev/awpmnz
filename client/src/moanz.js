@@ -4,6 +4,16 @@ const API_URL = process.env.REACT_APP_API;
 function Moanz(props){
 const {getMoan,_id} = props;
 const moanz = getMoan(_id);
+const[mm,mmSet]=useState([]);
+useEffect(()=>{
+    async function fetD(){
+
+        const result = await fetch(`${API_URL}/complaints/${props._id}`);
+        const mm = await result.json();
+        mmSet(mm);
+    }
+        fetD();
+    }, []);
 
 
 
@@ -26,19 +36,15 @@ const moanz = getMoan(_id);
 //} else
 return(
     <>
-    {moanz.map((moanzz)=>{
-    return(
-    <div key={moanzz._id}>
-    <p1>{moanzz.headline}</p1>
-    <p1>{moanzz.complaint}</p1>
-    <p1>{moanzz.rablerable}</p1>
+    
+    
+    <div>
+    <h1>{mm.headline}</h1>
+    <p1>{mm.complaint}</p1><br/>
+    <p1>{mm.rablerable}</p1>
     </div>
-    );
-    })
-    
-    
-    }
-    {console.log(getMoan)}
+   
+   
     </>
 
 

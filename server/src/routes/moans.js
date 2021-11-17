@@ -9,9 +9,9 @@ moanRoutes.get("/complaints/",async (req,res)=>{
     
 });
 
-moanRoutes.get("/complaints/:_id",(req,res)=>{
+moanRoutes.get("/complaints/:_id",async(req,res)=>{
     try{
-        const moan =  Moan.findById(req.params._id);
+        const moan =  await Moan.findById(req.params._id);
        
         if(moan){
             res.json(moan);

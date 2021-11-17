@@ -28,7 +28,7 @@ useEffect(() => {
  
    function getMoan(_id){
 
-      return moanzlist.find(moanz => moanz._id);
+      return moanzlist.find(moanz => moanz._id === parseInt(_id));
  }
 
   function addMoan(headline,complaint){
@@ -81,7 +81,7 @@ useEffect(() => {
       <h2>Complain here - Let the other MoanerZ hear you</h2>
       <Router>
        <MoanList path="/" moanzlist={moanzlist} addMoan={addMoan}></MoanList>
-       <Moanz path="/complaints/:_id" getMoan={getMoan} moanzlist={moanzlist}></Moanz>
+       <Moanz path="/moanz/:_id" getMoan={getMoan}></Moanz>
       </Router>
       </div>
      </>

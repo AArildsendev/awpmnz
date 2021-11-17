@@ -5,7 +5,8 @@ const moanSchema = new mongoose.Schema({
     required: true,
   },
   complaint: {type:String, required:true},
-  rablerable: {type: Number, default:0}
+  rablerable: {type: Number, default:0},
+  comment:{type:Array,default:null}
 });
 
 const Moan = mongoose.model("Moan", moanSchema);
@@ -25,6 +26,7 @@ console.log("Moan saved",savedmoan.headline);
 
 
 stuff().then(()=>
+console.log("disconnected"),
 mongoose.disconnect
 );
 
