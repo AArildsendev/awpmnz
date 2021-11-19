@@ -49,30 +49,34 @@ moanRoutes.get("/complaints/:_id",async(req,res)=>{
 
 
 
-/*moanRoutes.post("/complaints/kk/", (req,res) =>{
-    let id = Moan(req.body.id)
-    const rableup = Moan.findOneAndUpdate(id,{rablerable:+1},function(err,docs){
-        if(err){
-            console.log(err)
-        }
-        else{
-            console.log("rableup:",docs)
-        }
-    })
+moanRoutes.post("/complaints/:_id",async(req,res)=>{
+    const rableup =await Moan.findOneAndUpdate(req.params._id,{$inc:{rablerable:1}},function(err,docs){
     try{
-        rableup.save();
-        res.status(201);
-        res.json(rableup);
+        res.status(201)
+        res.json(rableup)
     }
-    catch(error){
-        res.status(500);
+    catch(err){
+        res.status(500)
         res.json({
-            error:"Imagine the counter going up, store the imagination in your head til next time you visit..You are now the database",
-            details:error.toString(),})
+            error:"This moan couldnt be updattoootetet",
+            details:err.toString(),
+        });
+
+
+
+    }}
+
+)})
     
-    }
-    })*/
+
+
+    
+
+
 
 
 
 export default moanRoutes;
+
+
+

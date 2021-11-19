@@ -53,9 +53,9 @@ useEffect(() => {
       postMaMoan();
       setData([...moanzlist,mogens]);
     };
-/*
-    function postUp(id){
-     
+
+    function postUp(id,rablerable){
+      const up = {rablerable:rablerable}
       const postRableUp = async() =>{
       const url = `${API_URL}/complaints/${id}`
       const response = await fetch(url,{
@@ -63,16 +63,17 @@ useEffect(() => {
         headers:{
           'Content-Type':'application/json',
         },
-        body: JSON.stringify(up),});
+        body: JSON.stringify(up),
+        });
         const reply = await response.json();
         console.log(reply);
         
       };
       postRableUp()
-      setData([...moanzlist,up])
+      setData(moanzlist,up)
       
     }
-  */
+  
   
   return (
     <>
@@ -80,7 +81,7 @@ useEffect(() => {
       <h1>Moanz</h1>
       <h2>Complain here - Let the other MoanerZ hear you</h2>
       <Router>
-       <MoanList path="/" moanzlist={moanzlist} addMoan={addMoan} ></MoanList>
+       <MoanList path="/" moanzlist={moanzlist} addMoan={addMoan} postUp={postUp}></MoanList>
        <Moanz path="/moanz/:_id" getMoan={getMoan}></Moanz>
        </Router>
       </div>
