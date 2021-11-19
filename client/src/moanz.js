@@ -43,6 +43,7 @@ return(
     <p1>{mm.complaint}</p1><br/>
     <p1>{mm.rablerable}</p1>
     </div>
+    {props.children}
    
    
     </>

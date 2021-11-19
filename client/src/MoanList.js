@@ -2,15 +2,16 @@ import { Link } from "@reach/router";
 import Moan from "./Moan"
 import AddMoan from "./AddMoan";
 import RableUp from "./RableUp";
+
 const API_URL = process.env.REACT_APP_API;
 function MoanList(props){
-   const list = props.moanzlist.map((moaan,index) => (
+  
+  const list = props.moanzlist.map((moaan,index) => (
     <li key={index}>
       <Link to={`/moanz/${moaan._id}`}>Gå til dette moan</Link>
       <Moan moan={moaan}/>
-      <RableUp rablerable={moaan.rablerable}/>
-      
-    </li>
+      <RableUp getMoan={props.getMoan} id={moaan._id} rablerable={moaan.rablerable}/>
+      </li>
     
     ));
     
