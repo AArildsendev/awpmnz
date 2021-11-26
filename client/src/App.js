@@ -4,7 +4,6 @@ import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import MoanList from "./MoanList";
 import Moanz from "./Moanz"
-import RableUp from "./RableUp";
 
 const API_URL = process.env.REACT_APP_API;
 
@@ -32,6 +31,24 @@ useEffect(() => {
       return moanzlist.find(moanz => moanz._id === parseInt(_id));
  }
 
+ function addcomment(com){
+   const commentm={
+     com:com
+   }
+   const postMaCom= async() =>{
+    const url = `${API_URL}/complaints/:_id`
+    const response = await fetch(url,{
+      method:'POST',
+      headers:{'Content-Type':'application/json',},
+      body: JSON.stringify(commentm),
+    });
+    const repli = await response.json();
+    console.log(repli);
+    };
+    postMaCom()
+    setData([moanzlist,commentm])
+    }
+ 
   function addMoan(headline,complaint){
     const mogens = {
       headline:headline,
@@ -82,7 +99,7 @@ useEffect(() => {
       <h2>Complain here - Let the other MoanerZ hear you</h2>
       <Router>
        <MoanList path="/" moanzlist={moanzlist} addMoan={addMoan} postUp={postUp}></MoanList>
-       <Moanz path="/moanz/:_id" getMoan={getMoan}></Moanz>
+       <Moanz path="/moanz/:_id" getMoan={getMoan} addcomment={addcomment}></Moanz>
        </Router>
       </div>
      </>
