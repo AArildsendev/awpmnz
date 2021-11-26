@@ -49,24 +49,18 @@ moanRoutes.get("/complaints/:_id",async(req,res)=>{
 
 
 
-moanRoutes.post("/complaints/:_id",async(req,res)=>{
-    const rableup =await Moan.findOneAndUpdate(req.params._id,{$inc:{rablerable:1}},function(err,docs){
-    try{
-        res.status(201)
-        res.json(rableup)
-    }
-    catch(err){
-        res.status(500)
-        res.json({
-            error:"This moan couldnt be updattoootetet",
-            details:err.toString(),
-        });
+moanRoutes.put("/complaints/:_id",async(req,res)=>{
+    const upd = await Moan.findById(req.params._id);
+    upd.rablerable = upd.rablerable+1
+    await upd.save();
+    console.log(upd)
+}
 
 
+)
+   
 
-    }}
 
-)})
     
 
 

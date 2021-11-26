@@ -4,11 +4,14 @@ import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import MoanList from "./MoanList";
 import Moanz from "./Moanz"
+import RableUp from "./RableUp";
+
 
 const API_URL = process.env.REACT_APP_API;
 
 function App() {
  const [moanzlist,setData] = useState([]);
+ const [rerend,rendSet] = useState(1)
  
 
 useEffect(() => {
@@ -31,24 +34,6 @@ useEffect(() => {
       return moanzlist.find(moanz => moanz._id === parseInt(_id));
  }
 
- function addcomment(com){
-   const commentm={
-     com:com
-   }
-   const postMaCom= async() =>{
-    const url = `${API_URL}/complaints/:_id`
-    const response = await fetch(url,{
-      method:'POST',
-      headers:{'Content-Type':'application/json',},
-      body: JSON.stringify(commentm),
-    });
-    const repli = await response.json();
-    console.log(repli);
-    };
-    postMaCom()
-    setData([moanzlist,commentm])
-    }
- 
   function addMoan(headline,complaint){
     const mogens = {
       headline:headline,
@@ -68,29 +53,29 @@ useEffect(() => {
         console.log(reply);
       };
       postMaMoan();
-      setData([...moanzlist,mogens]);
+      //setData([...moanzlist,mogens]);
     };
 
-    function postUp(id,rablerable){
-      const up = {rablerable:rablerable}
+    function postUp(id,index,rablerable){
+      console.log("id:"+id,"likes:"+rablerable,"index"+index)
+      const up = {rablerable:rablerable+1}
       const postRableUp = async() =>{
       const url = `${API_URL}/complaints/${id}`
       const response = await fetch(url,{
-        method:'POST',
+        method:'PUT',
         headers:{
           'Content-Type':'application/json',
         },
-        body: JSON.stringify(up),
+        body: JSON.stringify([...moanzlist,up]),
         });
         const reply = await response.json();
         console.log(reply);
         
+       
       };
       postRableUp()
-      setData(moanzlist,up)
-      
-    }
-  
+      }
+ 
   
   return (
     <>
@@ -98,8 +83,9 @@ useEffect(() => {
       <h1>Moanz</h1>
       <h2>Complain here - Let the other MoanerZ hear you</h2>
       <Router>
-       <MoanList path="/" moanzlist={moanzlist} addMoan={addMoan} postUp={postUp}></MoanList>
-       <Moanz path="/moanz/:_id" getMoan={getMoan} addcomment={addcomment}></Moanz>
+       <MoanList path="/" moanzlist={moanzlist} addMoan={addMoan} postUp={postUp} handleChange={setData}></MoanList>
+       
+       <Moanz path="/moanz/:_id" getMoan={getMoan}></Moanz>
        </Router>
       </div>
      </>
