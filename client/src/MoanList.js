@@ -10,7 +10,7 @@ function MoanList(props){
     <li key={index}>
       <Link to={`/moanz/${moaan._id}`}>Gå til dette moan</Link>
       <Moan moan={moaan}/>
-      <RableUp id={moaan._id} moaandeex={moaan.index} rablerable={moaan.rablerable} postUp={props.postUp}/>
+      <RableUp postUp={props.postUp} handleChange={props.handleChange} id={moaan._id} index={index} rablerable={moaan.rablerable}/>
       </li>
     
     ));
