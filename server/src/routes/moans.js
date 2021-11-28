@@ -50,14 +50,27 @@ moanRoutes.get("/complaints/:_id",async(req,res)=>{
 
 
 moanRoutes.put("/complaints/:_id",async(req,res)=>{
+    const all = await Moan.find()
     const upd = await Moan.findById(req.params._id);
     upd.rablerable = upd.rablerable+1
     await upd.save();
     console.log(upd)
+    res.json(all)
 }
 
 
+
+
 )
+moanRoutes.put("/complaints/:_id/comments",async(req,res)=>{
+   const all = await Moan.findById(req.params._id)
+   all.comment.push(req.body.comment)
+   await all.save()
+   console.log(all.comment)
+   res.json(all)
+   res.status(201)
+
+})
    
 
 

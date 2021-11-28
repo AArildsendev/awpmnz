@@ -1,22 +1,24 @@
 import { useState } from "react";
 function NewComment(props){
-    const{addcomment} = props
-    const[com,comSet]=useState("")
+    const{addComment,id,cmm,cmmSet} = props
+    const[com,comSet]=useState("");
 
     return(
-        <form>
+       <div>
             <input
             name="com"
             id="com"
             onChange={(event) => comSet(event.target.value)}
             type="text"/>
-            <button onClick={(event)=>{addcomment(com)}}>
+            <button onClick={(event)=>{addComment(com,id)}}>
                 Medbrok dig!
             </button>
-        </form>
+        </div>
+       
     )
-    export default NewComment;
+    
 
 
 
 }
+export default NewComment;

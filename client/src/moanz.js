@@ -1,39 +1,23 @@
 import { useEffect, useState } from "react";
+import NewComment from "./NewComment";
 const API_URL = process.env.REACT_APP_API;
 
 function Moanz(props){
-const {getMoan,_id} = props;
-const moanz = getMoan(_id);
+const {getMoan,_id,moanzlist} = props;
 const[mm,mmSet]=useState([]);
 useEffect(()=>{
     async function fetD(){
+        //unødvendigt? - hvis jeg var lidt mere frisk kunne jeg nok måske have hentet App.js usestate istedet for at bruge en ny??
 
         const result = await fetch(`${API_URL}/complaints/${props._id}`);
         const mm = await result.json();
         mmSet(mm);
     }
         fetD();
-    }, []);
+    }, [props.moanzlist]);
 
 
 
-  
-
-
-        /*<div>
-         {moanz.comments ? (<ul>
-             {moanz.comments.map((comment,index) => {
-                 return( <li key={index}>
-                     {comment}
-                 </li>
-                 )}) }
-         </ul>) : (
-             <p1>No comments yet, be the first to comment</p1>
-         ) }
-       </div>*/
-//if(moanz === undefined){
-   // return <p>This complain doesnt exist yet- write a complaint</p>
-//} else
 return(
     <>
     
@@ -43,7 +27,18 @@ return(
     <p1>{mm.complaint}</p1><br/>
     <p1>{mm.rablerable}</p1>
     </div>
-    {props.children}
+    <div>
+         {mm.comment ? (<ul>
+             {mm.comment.map((comment,index) => {
+                 return( <li key={index}>
+                     {comment}
+                 </li>
+                 )}) }
+         </ul>) : (
+             <p1>No comments yet, be the first to comment</p1>
+         ) }
+       </div>
+       <NewComment addComment={props.addComment} id={props._id}/>
    
    
     </>
