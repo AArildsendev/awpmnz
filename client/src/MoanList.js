@@ -2,15 +2,18 @@ import { Link } from "@reach/router";
 import Moan from "./Moan"
 import AddMoan from "./AddMoan";
 import RableUp from "./RableUp";
+import "../node_modules/bootstrap/dist/css/bootstrap.css";
+
 const API_URL = process.env.REACT_APP_API;
 function MoanList(props){
-   const list = props.moanzlist.map((moaan,index) => (
-    <li key={index}>
-      <Link to={`/complaints/${moaan._id}`}>Gå til dette moan</Link>
+  
+  const list = props.moanzlist.map((moaan,index) => (
+    <li key={index} className="list-group-item">
+      <h1><Link to={`/moanz/${moaan._id}`}>{moaan.headline}</Link></h1>
       <Moan moan={moaan}/>
-      <RableUp rablerable={moaan.rablerable}/>
-      
-    </li>
+      <RableUp postUp={props.postUp} id={moaan._id} index={index}/>
+     
+      </li>
     
     ));
     
@@ -18,7 +21,7 @@ function MoanList(props){
         <>
         <div>
         
-        <ol>
+        <ol className="list-group list-group-flush">
         
         {list}
        

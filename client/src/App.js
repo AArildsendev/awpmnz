@@ -1,17 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, setState } from "react";
 import {Router} from "@reach/router"
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import MoanList from "./MoanList";
 import Moanz from "./Moanz"
 
+
+
 const API_URL = process.env.REACT_APP_API;
 
 function App() {
- const [moanzlist,setData] = useState([]);
- 
 
-useEffect(() => {
+const [moanzlist,setData] = useState([]);
+ 
+ useEffect(() => {
   async function getData() {
     const url = `${API_URL}/complaints/`;
     const response = await fetch(url);
@@ -19,17 +21,45 @@ useEffect(() => {
     setData(moanzlist);
   }
   getData();
+}, []);
+ 
+ 
 
-  
- }, []);
 
  
 
  
    function getMoan(_id){
 
-      return moanzlist.find(moanz => moanz._id);
+      return moanzlist.find(moanz => moanz._id === parseInt(_id));
  }
+  function getState(_id){
+     return moanzlist.find(moanzlist._id)
+     
+  }
+
+  function addComment(com,id){
+    console.log(com)
+    const comments={
+      comment:com
+    }
+
+    const postCom = async() =>{
+      const url = `${API_URL}/complaints/${id}/comments`
+      const response = await fetch(url,{
+        method:'PUT',
+        headers:{
+          'Content-Type':'application/json',
+        },
+        body: JSON.stringify(comments),
+      });
+      const reply = await response.json();
+      setData(reply)
+      console.log(reply)
+    }
+    postCom()
+    
+  }
 
   function addMoan(headline,complaint){
     const mogens = {
@@ -53,26 +83,26 @@ useEffect(() => {
       setData([...moanzlist,mogens]);
     };
 
-    function postUp(rablerable){
-      const id = getMoan()
-      const up = {rablerable:rablerable}
+    function postUp(id,index,rablerable){
+      console.log("id:"+id,"likes:"+rablerable,"index"+index)
+      const up = {rablerable:rablerable+1}
       const postRableUp = async() =>{
       const url = `${API_URL}/complaints/${id}`
       const response = await fetch(url,{
-        method:'POST',
+        method:'PUT',
         headers:{
           'Content-Type':'application/json',
         },
-        body: JSON.stringify(up),});
+        body: JSON.stringify(),
+        });
         const reply = await response.json();
-        console.log(reply);
-        
-      };
-      postRableUp()
-      setData([...moanzlist,up])
+        setData(reply)
+        console.log(reply)};
       
-    }
-  
+      postRableUp()
+      //setData([...moanzlist,up])
+      }
+ 
   
   return (
     <>
@@ -80,9 +110,9 @@ useEffect(() => {
       <h1>Moanz</h1>
       <h2>Complain here - Let the other MoanerZ hear you</h2>
       <Router>
-       <MoanList path="/" moanzlist={moanzlist} addMoan={addMoan}></MoanList>
-       <Moanz path="/complaints/:_id" getMoan={getMoan} moanzlist={moanzlist}></Moanz>
-      </Router>
+       <MoanList path="/" moanzlist={moanzlist} addMoan={addMoan} postUp={postUp} getMoan={getMoan} getState={getState}></MoanList>
+        <Moanz path="/moanz/:_id" getMoan={getMoan} addComment={addComment} moanzlist={moanzlist}/>
+       </Router>
       </div>
      </>
   );
