@@ -9,7 +9,7 @@ return(
         
         <p>{props.moan.complaint}</p> 
         <p>{props.moan.rablerable}</p>
-        <p>{props.moan._id}</p>
+       
         
        
     </div>

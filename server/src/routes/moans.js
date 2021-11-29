@@ -30,10 +30,10 @@ moanRoutes.get("/complaints/:_id",async(req,res)=>{
     
     });
 
-    moanRoutes.post("/complaints/", (req,res)=>{
+    moanRoutes.post("/complaints/",async(req,res)=>{
     const moan = new Moan(req.body);
     try{
-        moan.save(); 
+         await moan.save(); 
         res.status(201);
         res.json(moan);
         }

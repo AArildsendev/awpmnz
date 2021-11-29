@@ -11,7 +11,7 @@ function MoanList(props){
     <li key={index} className="list-group-item">
       <h1><Link to={`/moanz/${moaan._id}`}>{moaan.headline}</Link></h1>
       <Moan moan={moaan}/>
-      <RableUp postUp={props.postUp} id={moaan._id} index={index}/>
+      <RableUp postUp={props.postUp} id={moaan._id} index={index} setData={props.setData} moanzlist={props.moanzlist}/>
      
       </li>
     

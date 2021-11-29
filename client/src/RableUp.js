@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
+import "../node_modules/bootstrap/dist/css/bootstrap.css";
 const API_URL = process.env.REACT_APP_API;
 function RableUp (props){
-   const{postUp,id,index,rablerable}= props
+const{postUp,id,index,rablerable,setData,moanzlist}= props
 
-  
-   function handleall(){
+
+  const handleall=()=>{
       
       postUp(id,index,rablerable)
+      setData([...moanzlist,{rablerable:rablerable+1}]);
       
       
    }
@@ -16,8 +18,8 @@ function RableUp (props){
   
 return(
     <div>
-    
-    <button type="button" onClick={(e)=>handleall()}>RableUp</button>
+     
+    <button type="button" className="btn btn-danger" onClick={(e)=>handleall()}>RableUp</button>
     </div>
    )
   

@@ -18,7 +18,7 @@ const savedmoan = await mainmoan.save();
 console.log("Moan saved",savedmoan.headline);
 }catch(error){
   console.error(error);
-  //await Moan.deleteMany({})*/
+  await Moan.deleteMany({})*/
   console.log("connected")
   //}
 }
