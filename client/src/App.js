@@ -101,7 +101,7 @@ const [moanzlist,setData] = useState([]);
   
   return (
     <>
-    <div>
+    <div className="container-md">
       <h1>Moanz</h1>
       <h2>Complain here - Let the other MoanerZ hear you</h2>
       <Router>
