@@ -12,7 +12,7 @@ const API_URL = process.env.REACT_APP_API;
 function App() {
 
 const [moanzlist,setData] = useState([]);
-const[updater,updSet] = useState(true)
+
  useEffect(() => {
     
     async function getData() {
