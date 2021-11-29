@@ -1,6 +1,7 @@
 {
   "name": "mern-app",
   "version": "1.0.0",
+  
   "scripts": {
     "start": "cd server && npm start",
     "react-dev": "cd client && npm start",
@@ -12,5 +13,9 @@
   "license": "ISC",
   "dependencies": {
     "async": "^3.2.2"
+  },
+  "engines": {
+    "node": "14.17.6"
   }
+  
 }
