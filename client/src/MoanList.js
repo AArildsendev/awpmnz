@@ -3,8 +3,6 @@ import Moan from "./Moan"
 import AddMoan from "./AddMoan";
 import RableUp from "./RableUp";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
-
-const API_URL = process.env.REACT_APP_API;
 function MoanList(props){
   
   const list = props.moanzlist.map((moaan,index) => (

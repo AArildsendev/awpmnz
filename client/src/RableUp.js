@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
-const API_URL = process.env.REACT_APP_API;
 function RableUp (props){
 const{postUp,id,index,rablerable,setData,moanzlist}= props
 

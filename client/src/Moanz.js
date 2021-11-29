@@ -5,13 +5,13 @@ import "../node_modules/bootstrap/dist/css/bootstrap.css";
 const API_URL = process.env.REACT_APP_API;
 
 function Moanz(props){
-const {getMoan,_id,moanzlist} = props;
+const {_id} = props;
 const[mm,mmSet]=useState([]);
 useEffect(()=>{
     async function fetD(){
         //unødvendigt? - hvis jeg var lidt mere frisk kunne jeg nok måske have hentet App.js usestate istedet for at bruge en ny??
 
-        const result = await fetch(`${API_URL}/complaints/${props._id}`);
+        const result = await fetch(`${API_URL}/complaints/${_id}`);
         const mm = await result.json();
         mmSet(mm);
     }

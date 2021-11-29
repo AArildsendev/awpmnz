@@ -1,4 +1,4 @@
-import { useEffect, useState, setState, useRef } from "react";
+import { useEffect, useState} from "react";
 import {Router} from "@reach/router"
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "./App.css";
@@ -28,7 +28,6 @@ const [moanzlist,setData] = useState([]);
 
       return moanzlist.find(moanz => moanz._id === parseInt(_id));
  }
-  
 
   function addComment(com,id){
     console.log(com)
@@ -80,7 +79,7 @@ const [moanzlist,setData] = useState([]);
 
     function postUp(id,index,rablerable){
       console.log("id:"+id,"likes:"+rablerable,"index"+index)
-      const up = {rablerable:rablerable+1}
+      //const up = {rablerable:rablerable+1}
       const postRableUp = async() =>{
       const url = `${API_URL}/complaints/${id}`
       const response = await fetch(url,{

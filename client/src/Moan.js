@@ -1,5 +1,3 @@
-import RableUp from "./RableUp"
-
 function Moan(props){
    
     
