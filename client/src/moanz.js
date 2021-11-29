@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import NewComment from "./NewComment";
+import "../node_modules/bootstrap/dist/css/bootstrap.css";
+
 const API_URL = process.env.REACT_APP_API;
 
 function Moanz(props){
@@ -28,9 +30,9 @@ return(
     <p1>{mm.rablerable}</p1>
     </div>
     <div>
-         {mm.comment ? (<ul>
+         {mm.comment ? (<ul className="list-group">
              {mm.comment.map((comment,index) => {
-                 return( <li key={index}>
+                 return( <li key={index} className="list-group-item">
                      {comment}
                  </li>
                  )}) }
