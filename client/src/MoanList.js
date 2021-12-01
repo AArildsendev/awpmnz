@@ -18,16 +18,12 @@ function MoanList(props){
     return(
         <>
         <div>
-        
-        <ol className="list-group list-group-flush">
-        
-        {list}
-       
-        </ol>
-        <div>
         <AddMoan addMoan={props.addMoan}/>
         </div>
-        
+        <div>
+        <ol className="list-group list-group-flush">
+        {list}
+       </ol>
         </div>
         </>
     )
