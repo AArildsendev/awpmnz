@@ -6,7 +6,7 @@ const{postUp,id,index,rablerable,setData,moanzlist}= props
   const handleall=()=>{
       
       postUp(id,index,rablerable)
-      setData([...moanzlist,{rablerable:rablerable+1}]);
+      //setData([...moanzlist,{rablerable:rablerable+1}]);
       
       
    }

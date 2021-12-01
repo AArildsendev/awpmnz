@@ -5,13 +5,14 @@ import path from "path";
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
-
+import checkJwt from "express-jwt";
 
 /* Local files */
 import moanRoutes from "./routes/moans.js";
 
 function createServer() {
   const app = express();
+  //app.use(checkJwt({secret:process.env.SECRET,algorithms:["HS512"]}));
 
   /* The express.json() middleware automatically parses JSON data in the body of
    * requests: http://expressjs.com/en/api.html#express.json */
