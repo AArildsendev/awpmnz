@@ -50,12 +50,10 @@ moanRoutes.get("/complaints/:_id",async(req,res)=>{
 
 
 moanRoutes.put("/complaints/:_id",async(req,res)=>{
-    const all = await Moan.find()
     const upd = await Moan.findById(req.params._id);
     upd.rablerable = upd.rablerable+1
     await upd.save();
-    console.log(upd)
-    res.json(all)
+    res.json(upd)
 }
 
 

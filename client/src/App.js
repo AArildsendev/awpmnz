@@ -71,9 +71,10 @@ const [moanzlist,setData] = useState([]);
         });
         const reply = await response.json();
         console.log(reply);
+        setData([...moanzlist,reply]);
       };
       postMaMoan();
-      setData([...moanzlist,mogens]);
+      
       
     };
 
@@ -90,11 +91,15 @@ const [moanzlist,setData] = useState([]);
         body: JSON.stringify(),
         });
         const reply = await response.json();
-        setData(reply)
+        setData(moanzlist.map((mogens)=>{
+          if(mogens._id===id){
+            return reply
+          }else{return mogens}
+        }))
         console.log(reply)};
       
       postRableUp()
-      //setData([...moanzlist,up])
+      
       
       }
  

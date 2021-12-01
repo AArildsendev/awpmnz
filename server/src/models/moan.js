@@ -9,12 +9,20 @@ const moanSchema = new mongoose.Schema({
   comment:{type:Array,default:null}
 });
 
+const moanUser = new mongoose.Schema({
+  uName:{type:String, required:true},
+  uPass:{type:String,required:true}
+})
+
+const User = mongoose.model("User",moanUser)
 const Moan = mongoose.model("Moan", moanSchema);
 
 async function stuff(){
+//let mainuser = new User({uName:"Brokoli", uPass:"letkode"})
+//const savedmoan = await mainuser.save();
 /*let mainmoan = new Moan({headline:"Chef er endnu dummere idag",complaint:"han sender emails",rablerable:0})
 try{
-const savedmoan = await mainmoan.save();
+const savedmoan = await mainuser.save();
 console.log("Moan saved",savedmoan.headline);
 }catch(error){
   console.error(error);
