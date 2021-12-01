@@ -7,7 +7,7 @@ function AddMoan(props){
     
    return(
         <div>
-            <h3>Moan</h3>
+            
             <div>
                 <label htmlFor="headline">Who or what is responsible for your moaning</label><br/>
                 <input

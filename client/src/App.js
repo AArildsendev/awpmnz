@@ -4,6 +4,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import MoanList from "./MoanList";
 import Moanz from "./Moanz"
+import mogens from "./mogens.svg"
 
 
 
@@ -107,8 +108,8 @@ const [moanzlist,setData] = useState([]);
   return (
     <>
     <div className="container-md">
-      <h1>Moanz</h1>
-      <h2>Complain here - Let the other MoanerZ hear you</h2>
+      <img src={mogens} alt="mogen" width="200px" height="100px"/>
+      <hr/>
       <Router>
        <MoanList path="/" moanzlist={moanzlist} setData={setData} addMoan={addMoan} postUp={postUp} getMoan={getMoan}></MoanList>
         <Moanz path="/moanz/:_id" getMoan={getMoan} addComment={addComment} moanzlist={moanzlist}/>

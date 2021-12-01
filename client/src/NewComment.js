@@ -1,7 +1,7 @@
 import { useState } from "react";
 function NewComment(props){
     const{addComment,id} = props
-   const{com,comSet}=useState();
+   const[com,comSet]=useState();
 
     return(
        <div>
