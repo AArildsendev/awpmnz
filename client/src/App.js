@@ -46,7 +46,11 @@ const [moanzlist,setData] = useState([]);
         body: JSON.stringify(comments),
       });
       const reply = await response.json();
-      setData(reply)
+      setData(moanzlist.map((moa)=>{
+        if(moa._id===id){
+          return reply
+        }else{return moa};
+      }))
       console.log(reply)
     }
     postCom()
